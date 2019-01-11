@@ -29,12 +29,17 @@ import CartItem from './cartitem';
         <div className="col-md-2">Quantity</div>
       </div>
     </div>
-    {this.props.items.map(ele => {
-        return <CartItem item = {ele} />
+    {
+      this.props.items.map(ele => {
+        return <CartItem key={ele.id} item = {ele} />
     })}
   </div>
+  <p>Total Price: ${
+    this.props.items.reduce((acc,element) =>{
+    return acc + Number(element.product.priceInCents)
+  },0)}</p>
 </div>
-          )
+          );
       }
   }
 
